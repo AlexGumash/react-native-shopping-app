@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { View } from "react-native";
+import { View, Button } from "react-native";
 
 import MarketProduct from "../components/Market-item.js";
 
@@ -11,13 +11,21 @@ class Market extends React.Component {
       <View>
         {Object.keys(items).map((object, index) => {
           return (
-            <MarketProduct
-              id={items[object].id}
-              key={index}
-              name={items[object].name}
-              price={items[object].price}
-              available={items[object].available}
-            />
+            <View key={index}>
+              <MarketProduct
+                id={items[object].id}
+                name={items[object].name}
+                price={items[object].price}
+                available={items[object].available}
+                description={items[object].description}
+              />
+              <View>
+                <Button
+                  title="more"
+                  onPress={() => this.props.navigation.navigate("NotHome")}
+                />
+              </View>
+            </View>
           );
         })}
       </View>

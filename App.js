@@ -2,30 +2,13 @@ import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Provider } from "react-redux";
 import { TabNavigator } from "react-navigation";
+import { StackNavigator } from "react-navigation";
 import store from "./src/reducers/index.js";
 
 import Market from "./src/containers/Market.js";
 import Cart from "./src/containers/Cart.js";
+import AboutItem from "./src/components/About-item.js";
 
-class ItemsList extends React.Component {
-  static navigationOptions = {
-    tabBarIcon: ({ tintColor }) => {
-      return (
-        <Image
-          source={require("./src/static/images/search-512-2.png")}
-          style={[iconStyle, { tintColor: tintColor }]}
-        />
-      );
-    }
-  };
-  render() {
-    return (
-      <View style={{ marginTop: 30 }}>
-        <Market />
-      </View>
-    );
-  }
-}
 const iconStyle = {
   width: 40,
   height: 40,
@@ -59,9 +42,41 @@ class ItemsInCartList extends React.Component {
   }
 }
 
+const Gavno = StackNavigator({
+  Home: {
+    screen: Market,
+    navigationOptions: {
+      title: "Market"
+    }
+  },
+  NotHome: {
+    screen: AboutItem,
+    navigationOptions: {
+      title: "About item"
+    }
+  }
+});
+
 const App = TabNavigator(
   {
-    Market: { screen: ItemsList },
+    Market: {
+      screen: Gavno,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => {
+          return (
+            <Image
+              source={require("./src/static/images/search-512-2.png")}
+              style={[
+                iconStyle,
+                {
+                  tintColor: tintColor
+                }
+              ]}
+            />
+          );
+        }
+      }
+    },
     ItemsInCart: { screen: ItemsInCartList }
   },
   {

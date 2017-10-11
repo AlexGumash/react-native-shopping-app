@@ -21,40 +21,65 @@ class Product extends React.Component {
     const itemImage = imageForItem[this.props.id];
     return (
       <View style={styles.marketItem}>
-        <View style={{ backgroundColor: "blue" }}>
+        <View
+          className="image-name-description"
+          style={{ display: "flex", flexDirection: "row" }}>
           <Image
             source={itemImage}
             style={{
               width: 100,
               height: 100,
-              resizeMode: "contain",
-              backgroundColor: "red"
+              resizeMode: "contain"
             }}
           />
+          <View
+            className="name-and-description"
+            style={styles.nameAndDescription}>
+            <View
+              className="name-and-description__name"
+              style={{ paddingBottom: 3 }}>
+              <Text>
+                {this.props.name}
+              </Text>
+            </View>
+            <View className="name-and-description__description">
+              <Text>
+                {this.props.description}
+              </Text>
+            </View>
+          </View>
         </View>
-        <View>
+        <View className="price" style={{ paddingTop: 5, paddingRight: 10 }}>
           <Text>
-            {this.props.name} - &#36;{this.props.price} available:{this.props.available}
+            &#36;{this.props.price}
           </Text>
-        </View>
-        <View>
-          <Button
-            title="add to cart"
-            onPress={() => {
-              this.clickBuyButton(this.props.id);
-            }}
-          />
         </View>
       </View>
     );
   }
 }
 
+// <Button
+//   title="add to cart"
+//   onPress={() => {
+//     this.clickBuyButton(this.props.id);
+//   }}
+// />
+
 const styles = StyleSheet.create({
   marketItem: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    borderBottomWidth: 1
+  },
+  nameAndDescription: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    paddingTop: 5,
+    paddingLeft: 10
   }
 });
 
