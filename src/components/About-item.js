@@ -4,40 +4,49 @@ import { View, Text, Button, StyleSheet, Image } from "react-native";
 import imageForItem from "../helpers/images.js";
 
 class AboutItem extends React.Component {
-  // static navigationOptions = {
-  //   title: "About item"
-  // };
-  // clickBuyButton(id) {
-  //   const market = this.props.market.cartItems;
-  //   if (market[this.props.id].available > 0) {
-  //     this.props.dispatch({
-  //       type: "ADD_TO_CART",
-  //       id: id
-  //     });
-  //     this.props.dispatch({
-  //       type: "FIND_TOTAL",
-  //       data: market
-  //     });
-  //   }
-  // }
+  clickBuyButton(id) {
+    const market = this.props.market.cartItems;
+    if (market[id].available > 0) {
+      this.props.dispatch({
+        type: "ADD_TO_CART",
+        id: id
+      });
+      this.props.dispatch({
+        type: "FIND_TOTAL",
+        data: market
+      });
+    }
+  }
   render() {
-    // const itemImage = imageForItem[this.props.id];
+    const { params } = this.props.navigation.state;
+    const itemImage = imageForItem[params.id];
     return (
       <View>
-        <View>
-          <Text>KEK</Text>
+        <View style={{ display: "flex", flexDirection: "row" }}>
+          <Image
+            source={itemImage}
+            style={{
+              flex: 1,
+              height: 200,
+              resizeMode: "contain"
+            }}
+          />
         </View>
+        <View>
+          <Text>
+            {params.name}
+          </Text>
+        </View>
+        <Button
+          title="add to cart"
+          onPress={() => {
+            this.clickBuyButton(params.id);
+          }}
+        />
       </View>
     );
   }
 }
-
-// <Button
-//   title="add to cart"
-//   onPress={() => {
-//     this.clickBuyButton(this.props.id);
-//   }}
-// />
 
 // const styles = StyleSheet.create({
 //   marketItem: {

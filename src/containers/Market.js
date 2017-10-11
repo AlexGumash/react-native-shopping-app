@@ -18,13 +18,8 @@ class Market extends React.Component {
                 price={items[object].price}
                 available={items[object].available}
                 description={items[object].description}
+                navigation={this.props.navigation}
               />
-              <View>
-                <Button
-                  title="more"
-                  onPress={() => this.props.navigation.navigate("NotHome")}
-                />
-              </View>
             </View>
           );
         })}
