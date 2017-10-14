@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, StatusBar } from "react-native";
 import { Provider } from "react-redux";
 import { TabNavigator } from "react-navigation";
 import { StackNavigator } from "react-navigation";
@@ -13,6 +13,10 @@ const iconStyle = {
   width: 40,
   height: 40,
   resizeMode: "contain"
+};
+
+const statusBarPadding = {
+  paddingTop: StatusBar.currentHeight
 };
 
 class ItemsInCartList extends React.Component {
@@ -34,8 +38,7 @@ class ItemsInCartList extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text>Loch</Text>
+      <View style={statusBarPadding}>
         <Cart />
       </View>
     );

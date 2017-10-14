@@ -1,5 +1,14 @@
 {
   "expo": {
-    "sdkVersion": "21.0.0"
+    "name": "Example app",
+    "icon": "./src/static/images/Jekan.png",
+    "version": "1.0.0",
+    "sdkVersion": "21.0.0",
+    "ios": {
+      "bundleIdentifier": "com.example.kek"
+    },
+    "android": {
+      "package": "com.example.kek"
+    }
   }
 }
