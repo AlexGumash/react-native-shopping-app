@@ -2,28 +2,22 @@
   "lamborgini": {
     "id": "lamborgini",
     "name": "Lamborgini",
-    "description": "The fastest car",
     "price": 293500,
     "total": 0,
-    "count": 0,
-    "available": 5
+    "count": 0
   },
   "lada": {
     "id": "lada",
     "name": "Lada",
-    "description": "Slow car",
     "price": 750,
     "total": 0,
-    "count": 0,
-    "available": 45
+    "count": 0
   },
   "dodge": {
     "id": "dodge",
     "name": "Dodge",
-    "description": "The slowest car",
     "price": 5000,
     "total": 0,
-    "count": 0,
-    "available": 13
+    "count": 0
   }
 }

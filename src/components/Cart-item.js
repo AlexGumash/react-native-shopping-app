@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    market: state
+    market: state,
+    db: state.dbReducer
   };
 }
 

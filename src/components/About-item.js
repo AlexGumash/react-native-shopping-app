@@ -48,26 +48,10 @@ class AboutItem extends React.Component {
   }
 }
 
-// const styles = StyleSheet.create({
-//   marketItem: {
-//     display: "flex",
-//     flexDirection: "row",
-//     justifyContent: "space-between",
-//     borderBottomWidth: 1
-//   },
-//   nameAndDescription: {
-//     display: "flex",
-//     flexDirection: "column",
-//     justifyContent: "flex-start",
-//     alignItems: "flex-start",
-//     paddingTop: 5,
-//     paddingLeft: 10
-//   }
-// });
-
 function mapStateToProps(state) {
   return {
-    market: state
+    market: state,
+    db: state.dbReducer
   };
 }
 
