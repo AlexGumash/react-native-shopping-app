@@ -10,7 +10,8 @@ class Market extends React.Component {
     super();
   }
   componentWillMount() {
-    this.props.dispatch(fetchCars(this.props.dispatch));
+    const { dispatch } = this.props;
+    dispatch(fetchCars(this.props.dispatch));
   }
   render() {
     const items = this.props.db.data;

@@ -5,15 +5,17 @@ import imageForItem from "../helpers/images.js";
 
 class AboutItem extends React.Component {
   clickBuyButton(id) {
-    const market = this.props.market.cartItems;
-    if (market[id].available > 0) {
-      this.props.dispatch({
+    const database = this.props.db.data;
+    const { dispatch } = this.props;
+    if (database[id].available > 0) {
+      dispatch({
         type: "ADD_TO_CART",
         id: id
       });
-      this.props.dispatch({
+
+      dispatch({
         type: "FIND_TOTAL",
-        data: market
+        data: this.props.market
       });
     }
   }
@@ -50,7 +52,7 @@ class AboutItem extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    market: state,
+    market: state.cartItems,
     db: state.dbReducer
   };
 }

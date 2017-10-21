@@ -5,12 +5,13 @@ import { View, Text, Button, StyleSheet } from "react-native";
 class CartItem extends React.Component {
   removeFromCart(id) {
     const market = this.props.market.cartItems;
+    const { dispatch } = this.props;
     if (market[id].count > 0) {
-      this.props.dispatch({
+      dispatch({
         type: "DEL_FROM_CART",
         id: id
       });
-      this.props.dispatch({
+      dispatch({
         type: "FIND_TOTAL",
         data: market
       });

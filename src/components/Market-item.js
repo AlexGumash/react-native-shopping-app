@@ -11,19 +11,6 @@ import {
 import imageForItem from "../helpers/images.js";
 
 class Product extends React.Component {
-  clickBuyButton(id) {
-    const market = this.props.market.cartItems;
-    if (market[this.props.id].available > 0) {
-      this.props.dispatch({
-        type: "ADD_TO_CART",
-        id: id
-      });
-      this.props.dispatch({
-        type: "FIND_TOTAL",
-        data: market
-      });
-    }
-  }
   render() {
     const itemImage = imageForItem[this.props.id];
     return (

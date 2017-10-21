@@ -1,4 +1,5 @@
 import * as actionTypes from "../constants.js";
+import database from "../db/database.js";
 
 const initialState = {
   fetched: false,
@@ -19,6 +20,19 @@ export const dbReducer = (state = initialState, action) => {
         fetching: false,
         data: action.payload
       });
+    }
+    case actionTypes.ADD_TO_CART: {
+      const newState = { ...state.data };
+      console.log(newState[action.id].available);
+      newState[action.id].available = newState[action.id].available - 1;
+      database.ref("cars/" + action.id).set(newState[action.id]);
+      return { ...state, ...newState };
+    }
+    case actionTypes.DEL_FROM_CART: {
+      const newState = { ...state.data };
+      newState[action.id].available = newState[action.id].available + 1;
+      database.ref("cars/" + action.id).set(newState[action.id]);
+      return { ...state, ...newState };
     }
     default: {
       return state;
